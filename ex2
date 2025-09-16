@@ -1,0 +1,232 @@
+#include <stdio.h>
+#include <math.h>
+
+void displayMenu();
+float calculateTriangleArea();
+float calculateCircleArea();
+float calculateRectangleArea();
+float calculateSquareArea();
+float calculateTrapezoidArea();
+
+int main() {
+    int choice;
+    float area;
+    
+    printf("Please use area computation!\n\n");
+    
+    do {
+        displayMenu();
+        printf("Please enter your choice (1-6): ");
+        scanf("%d", &choice);
+        
+        switch(choice) {
+            case 1:
+                area = calculateTriangleArea();
+                printf("Area of the triangle: %.2f\n\n", area);
+                break;
+            case 2:
+                area = calculateCircleArea();
+                printf("Area of the circle: %.2f\n\n", area);
+                break;
+            case 3:
+                area = calculateRectangleArea();
+                printf("Area of the rectangle: %.2f\n\n", area);
+                break;
+            case 4:
+                area = calculateSquareArea();
+                printf("Area of the square: %.2f\n\n", area);
+                break;
+            case 5:
+                area = calculateTrapezoidArea();
+                printf("Area of the trapezoid: %.2f\n\n", area);
+                break;
+         
+             
+            default:
+                printf("Invalid choice, please try again!\n\n");
+        }
+    } while(choice != 6);
+    
+    return 0;
+}
+
+void displayMenu() {
+    printf("Please select a geometric shape to calculate area:\n");
+    printf("1. Triangle\n");
+    printf("2. Circle\n");
+    printf("3. Rectangle\n");
+    printf("4. Square\n");
+    printf("5. Trapezoid\n");
+}
+
+float calculateTriangleArea() {
+    float base, height;
+    printf("Enter the base of the triangle: ");
+    scanf("%f", &base);
+    printf("Enter the height of the triangle: ");
+    scanf("%f", &height);
+    return 0.5 * base * height;
+}
+
+float calculateCircleArea() {
+    float radius;
+    printf("Enter the radius of the circle: ");
+    scanf("%f", &radius);
+    return M_PI * radius * radius;
+}
+
+float calculateRectangleArea() {
+    float length, width;
+    printf("Enter the length of the rectangle: ");
+    scanf("%f", &length);
+    printf("Enter the width of the rectangle: ");
+    scanf("%f", &width);
+    return length * width;
+}
+
+float calculateSquareArea() {
+    float side;
+    printf("Enter the side length of the square: ");
+    scanf("%f", &side);
+    return side * side;
+}
+
+float calculateTrapezoidArea() {
+    float base1, base2, height;
+    printf("Enter the first base of the trapezoid: ");
+    scanf("%f", &base1);
+    printf("Enter the second base of the trapezoid: ");
+    scanf("%f", &base2);
+    printf("Enter the height of the trapezoid: ");
+    scanf("%f", &height);
+    return 0.5 * (base1 + base2) * height;
+}
+
+
+2.
+#include <stdio.h>
+
+int main() {
+    int num, originalNum, reversedNum = 0, remainder;
+    
+       printf("Enter an integer: ");
+    scanf("%d", &num);
+    
+    originalNum = num;     
+    while (num != 0) {
+    remainder = num % 10; // Get the last digit
+reversedNum = reversedNum * 10 + remainder; 
+    num /= 10; 
+    }
+    
+    if (originalNum == reversedNum) {
+        printf("%d is a palindrome number.\n", originalNum);
+    } else {
+        printf("%d is not a palindrome number.\n", originalNum);
+    }
+    
+    return 0;
+}
+
+
+3.
+#include <stdio.h>
+
+int main() {
+    int count = 0;
+    double number, sum = 0.0;
+    char choice;
+    
+    printf("Average Calculator Program\n");
+    printf("==========================\n");
+    
+    do {
+        
+        printf("Enter a number: ");
+        scanf("%lf", &number);
+        
+       
+        sum += number;
+        count++;
+        
+        
+        printf("Do you want to enter another number? (y/n): ");
+        scanf(" %c", &choice); 
+        
+    } while (choice == 'y' || choice == 'Y');
+    
+    
+    if (count > 0) {
+        double average = sum / count;
+        printf("\nYou entered %d numbers.\n", count);
+        printf("The sum is: %.2f\n", sum);
+        printf("The average is: %.2f\n", average);
+    } else {
+        printf("\nNo numbers were entered.\n");
+    }
+    
+    return 0;
+}
+
+4.
+#include <stdio.h>
+
+int isPerfect(int num) {
+    int sum = 0;
+    
+    
+    for (int i = 1; i <= num / 2; i++) {
+        if (num % i == 0) {
+            sum += i;
+        }
+    }
+    
+       return (sum == num);
+}
+
+void printPerfectNumbers(int start, int end) {
+    printf("Perfect numbers between %d and %d are: ", start, end);
+    
+    int found = 0;
+    for (int i = start; i <= end; i++) {
+        if (isPerfect(i)) {
+            printf("%d ", i);
+            found = 1;
+        }
+    }
+    
+    if (!found) {
+        printf("No perfect numbers found in the given range.");
+    }
+    printf("\n");
+}
+
+int main() {
+    int start, end;
+    
+    printf("Perfect Number Finder\n");
+    printf("=====================\n");
+    
+   
+    printf("Enter the starting number: ");
+    scanf("%d", &start);
+    
+    printf("Enter the ending number: ");
+    scanf("%d", &end);
+    
+   
+    if (start < 1) {
+        printf("Note: Starting number adjusted to 1 (perfect numbers are positive integers).\n");
+        start = 1;
+    }
+    
+    if (end < start) {
+        printf("Error: Ending number should be greater than or equal to starting number.\n");
+        return 1;
+    }
+    
+    
+    printPerfectNumbers(start, end);
+    
+    return 0;
+}
